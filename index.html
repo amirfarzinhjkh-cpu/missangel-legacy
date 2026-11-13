@@ -99,6 +99,20 @@ body.zen-mode .light-canvas{display:none}
 body.warm-glow:after{background:radial-gradient(ellipse at center,rgba(255,194,130,.2),transparent 70%)}
 @media(max-width:650px){.feature-grid{grid-template-columns:1fr}.feature-lab{padding:65px 0}.feature-card{padding:20px}}
 
+
+/* readability and Persian text layout */
+p,h1,h2,h3,.footer-credit,.footer-note{ text-wrap:pretty; overflow-wrap:break-word; }
+.feature-card{display:flex;flex-direction:column;align-items:stretch;text-align:right}
+.feature-card h3,.feature-card p,.feature-output{text-align:right;direction:rtl}
+.feature-card textarea,.feature-card input{direction:rtl;text-align:right;line-height:2}
+.footer-credit,.footer-note,.footer-origin{direction:rtl;text-align:center}
+.moment h3,.moment p{direction:rtl;text-align:right}
+.section-head{direction:rtl;text-align:right}
+.zen-exit{display:none;position:fixed;top:20px;right:20px;z-index:120;width:46px;height:46px;border-radius:15px;border:1px solid rgba(196,215,255,.35);background:rgba(13,17,31,.82);color:#e7edff;font-size:22px;cursor:pointer;backdrop-filter:blur(16px);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.zen-exit:focus-visible{outline:2px solid #c5d3ff;outline-offset:4px}
+body.zen-mode .zen-exit{display:grid;place-items:center}
+@media(max-width:520px){.zen-exit{top:14px;right:14px}}
+
 </style>
 </head>
 <body>
@@ -158,7 +172,7 @@ body.warm-glow:after{background:radial-gradient(ellipse at center,rgba(255,194,1
 </div></section>
 </main>
 <footer class="footer"><div class="wrap footer-inner"><div><span class="footer-brand">MissAngel ✦</span><small>یک مکث کوتاه، بیرون از شلوغی جهان.</small><div class="footer-origin">الهامِ آغاز این مکث؛ نامی که در سکوت می‌ماند.</div></div><div class="footer-socials"><a href="https://t.me/AMORYG" target="_blank" rel="noopener noreferrer" aria-label="Telegram">✈ Telegram</a><a href="https://instagram.com/amir_afterr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎ Instagram</a></div><div class="footer-credit"><strong>Creator: Nobody</strong><span> — این سایت متعلق به کسی‌ست که روزی به یادش بودم؛ اما او اکنون مرا فراموش کرده است.</span></div><div class="footer-note">© <span id="year"></span> MissAngel</div></div></footer>
-<button class="sound-btn" id="soundBtn" aria-label="روشن یا خاموش کردن صدا">♫</button><div class="toast" id="toast" role="status"></div>
+<button class="zen-exit" id="zenExitBtn" type="button" aria-label="خروج از حالت Zen" title="خروج از حالت Zen">↩</button><button class="sound-btn" id="soundBtn" aria-label="روشن یا خاموش کردن صدا">♫</button><div class="toast" id="toast" role="status"></div>
 <script>
 (()=>{'use strict';
 const $=s=>document.querySelector(s);
@@ -197,7 +211,7 @@ $('#saveThanks').addEventListener('click',()=>{try{localStorage.setItem('ma-than
 $('#saveQuote').addEventListener('click',()=>{const text=messages[Math.max(0,messageIndex)];const cv=document.createElement('canvas');cv.width=1080;cv.height=1080;const x=cv.getContext('2d');const g=x.createLinearGradient(0,0,1080,1080);g.addColorStop(0,'#11172b');g.addColorStop(1,'#382d50');x.fillStyle=g;x.fillRect(0,0,1080,1080);x.textAlign='center';x.fillStyle='#cbd7ff';x.font='bold 42px sans-serif';x.fillText('MissAngel ✦',540,260);x.fillStyle='#ffffff';x.font='40px sans-serif';const words=text.split(' ');let line='',lines=[];for(const word of words){const test=line?line+' '+word:word;if(x.measureText(test).width>820){lines.push(line);line=word}else line=test}if(line)lines.push(line);lines.forEach((v,i)=>x.fillText(v,540,480+i*75));x.fillStyle='#aeb8d0';x.font='24px sans-serif';x.fillText('یک مکث کوتاه، بیرون از شلوغی جهان.',540,850);const a=document.createElement('a');a.download='missangel-card.png';a.href=cv.toDataURL('image/png');a.click();$('#quoteOutput').textContent='کارت جمله آماده شد.'});
 const fog=$('#fogPanel');let fogTouches=0;fog.addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='touch'){fogTouches++;if(fogTouches>2)fog.classList.add('cleared')}});fog.addEventListener('click',()=>fog.classList.add('cleared'));
 $('#hugBtn').addEventListener('click',()=>{document.body.classList.add('warm-glow');$('#hugOutput').textContent='یک آغوش گرم از این گوشه‌ی کوچک؛ تو سزاوار مهربانی هستی. 🧡';setTimeout(()=>document.body.classList.remove('warm-glow'),3500)});
-$('#zenBtn').addEventListener('click',()=>{document.body.classList.toggle('zen-mode');$('#zenBtn').textContent=document.body.classList.contains('zen-mode')?'خروج از حالت Zen':'ورود به حالت Zen';if(document.body.classList.contains('zen-mode'))$('#thought').scrollIntoView({behavior:'smooth'})});
+function exitZen(){document.body.classList.remove('zen-mode');$('#zenBtn').textContent='ورود به حالت Zen'}function enterZen(){document.body.classList.add('zen-mode');$('#zenBtn').textContent='ورود به حالت Zen';$('#thought').scrollIntoView({behavior:'smooth'})}$('#zenBtn').addEventListener('click',()=>{if(document.body.classList.contains('zen-mode'))exitZen();else enterZen()});$('#zenExitBtn').addEventListener('click',exitZen);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('zen-mode'))exitZen()});
 let logoTaps=0,logoTapTimer;$('.brand').addEventListener('click',e=>{logoTaps++;clearTimeout(logoTapTimer);logoTapTimer=setTimeout(()=>logoTaps=0,1200);if(logoTaps>=5){e.preventDefault();logoTaps=0;$('#secretOverlay').classList.add('active')}});$('#closeSecret').addEventListener('click',()=>$('#secretOverlay').classList.remove('active'));
 $('#leaveBtn').addEventListener('click',()=>$('#exitOverlay').classList.add('active'));$('#returnBtn').addEventListener('click',()=>$('#exitOverlay').classList.remove('active'));
 
