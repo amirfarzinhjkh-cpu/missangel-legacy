@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MissAngel | پیام</title>
+<title>MissAngel | یک مکث کوتاه</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--heart-color:#fff;--heart-glow:rgba(255,255,255,.65);}
@@ -137,14 +137,14 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
   <div class="tab-section active" id="tab-chat">
     <div class="chat-box" id="chatBox"></div>
     <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" placeholder="هر چی تو دلته، بپرس..." onkeydown="if(event.key==='Enter')sendChat()">
+      <input class="chat-input" id="chatInput" placeholder="هر سؤالی داری، بپرس..." onkeydown="if(event.key==='Enter')sendChat()">
       <button class="chat-send" onclick="sendChat()">➤</button>
     </div>
-    <div class="chat-hint">جواب‌ها با AI تولید می‌شن؛ گاهی کمی طول می‌کشه</div>
+    <div class="chat-hint">پاسخ‌ها با هوش مصنوعی ساخته می‌شن و ممکنه کمی زمان ببرن.</div>
   </div>
-  <div class="tab-section" id="tab-suggest">    <div style="font-size:13px;opacity:.7;margin-bottom:10px;line-height:1.9;">ایده‌ات رو بنویس؛ ارسال آنلاین بعد از اتصال امن فعال می‌شه 🤍</div>
+  <div class="tab-section" id="tab-suggest">    <div style="font-size:13px;opacity:.7;margin-bottom:10px;line-height:1.9;">ایده‌ات رو بنویس؛ فعلاً امکان ارسال آنلاین فعال نیست. 🤍</div>
     <input class="suggest-input" id="suggestName" placeholder="اسمت (اختیاری)">
-    <textarea class="suggest-input" id="suggestText" rows="4" placeholder="پیشنهاد یا ایده‌ات..."></textarea>
+    <textarea class="suggest-input" id="suggestText" rows="4" placeholder="ایده یا پیشنهادی که دوست داری ثبت بشه..."></textarea>
     <button class="choice" style="width:100%;margin-top:4px;" onclick="sendSuggestion()">بفرست 🕊️</button>
     <div class="suggest-status" id="suggestStatus"></div>
   </div>
@@ -153,7 +153,7 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
     <div class="setting-row"><span>🌫️ مه</span><div class="toggle on" data-key="fog" onclick="toggleSetting(this)"></div></div>
     <div class="setting-row"><span>☄️ ستاره‌ی دنباله‌دار</span><div class="toggle on" data-key="stars" onclick="toggleSetting(this)"></div></div>
     <div class="setting-row"><span>🔦 نور دنبال‌کننده‌ی موس</span><div class="toggle on" data-key="glow" onclick="toggleSetting(this)"></div></div>
-    <div class="settings-note">ترجیحاتت فقط روی همین دستگاه ذخیره می‌شه</div>
+    <div class="settings-note">تنظیمات فقط روی همین دستگاه ذخیره می‌شن.</div>
   </div>
 </div>
 
@@ -162,27 +162,27 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
     <div class="intro-line"></div>
     <div class="intro-dragon">🐉</div>
     <div class="intro-heart"></div>
-    <div class="intro-title">بعضی چیزها اتفاقی نیستند...</div>
+    <div class="intro-title">گاهی یک مکث، همه‌چیز را عوض می‌کند...</div>
   </div>
 </div>
 
 <div class="lock-screen" id="lockScreen">
   <div class="lock-inner">
     <div class="lock-icon">🔒</div>
-    <div class="lock-title">این جا قفله...</div>
-    <div class="lock-sub">فقط کسایی که دلیل موندن دارن، کلیدشو می‌دونن</div>
-    <input class="lock-input" id="lockInput" type="password" placeholder="کلمه‌ی عبور" onkeydown="if(event.key==='Enter')tryUnlock()">
-    <button class="choice" style="margin-top:12px;width:100%;" onclick="tryUnlock()">باز کن 🤍</button>
+    <div class="lock-title">این‌جا قفل است...</div>
+    <div class="lock-sub">برای ورود، رمز را وارد کن.</div>
+    <input class="lock-input" id="lockInput" type="password" placeholder="رمز ورود" onkeydown="if(event.key==='Enter')tryUnlock()">
+    <button class="choice" style="margin-top:12px;width:100%;" onclick="tryUnlock()">ورود 🤍</button>
     <div class="lock-status" id="lockStatus"></div>
   </div>
 </div>
 
 <div class="container">
   <section class="question-screen" id="questionScreen" style="display:none;">
-    <div class="question">ماندن یا رفتن؟</div>
+    <div class="question">می‌مونی یا می‌ری؟</div>
     <div class="choices">
-      <button class="choice" onclick="answer('stay')">موندن 🤍</button>
-      <button class="choice" onclick="answer('leave')">رفتن 🖤</button>
+      <button class="choice" onclick="answer('stay')">می‌مونم 🤍</button>
+      <button class="choice" onclick="answer('leave')">می‌رم 🖤</button>
     </div>
     <div class="result" id="result"></div>
   </section>
@@ -201,12 +201,12 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
       <svg class="ecg" viewBox="0 0 300 80">
         <path d="M0 42 L55 42 L65 42 L72 20 L79 62 L87 42 L110 42 L120 42 L128 30 L135 52 L142 42 L170 42 L180 42 L188 17 L196 65 L204 42 L235 42 L245 42 L255 30 L262 53 L270 42 L300 42"/>
       </svg>
-      <div class="greeting">خوش اومدی 🖤</div>
-      <div class="sub-greeting">بعضی موندن‌ها دلیل خودشونو دارن...</div>
+      <div class="greeting">خوش اومدی. 🖤</div>
+      <div class="sub-greeting">گاهی موندن، خودش یه انتخابه...</div>
     </div>
     <div class="loading"><span></span></div>
     <div class="footer">
-      ساخت شد توسط <a href="https://t.me/AMORYG" target="_blank">AMORYG 🗣️</a>
+      ساخته‌شده توسط <a href="https://t.me/AMORYG" target="_blank">AMORYG 🗣️</a>
       <div class="version-tag">MissAngel v0.1.0</div>
     </div>
   </section>
@@ -223,7 +223,7 @@ function tryUnlock(){
   const lockTeases=["اشتباهه... ولی دلم نیومد ناراحتت کنم 😅","اینم نیست. شاید یه چیز دیگه امتحان کنی؟","💡 راهنمایی: یه اسم انگلیسیه که با «a» شروع می‌شه..."];
   if(val===SITE_PASSWORD){
     status.style.color="#7dffa8";
-    status.textContent="درسته... می‌دونستم تو می‌تونی 🤍";
+    status.textContent="درسته؛ خوش اومدی. 🤍";
     setTimeout(()=>{      document.getElementById("lockScreen").classList.remove("show");
       document.getElementById("questionScreen").style.display="block";
     },900);
@@ -345,7 +345,7 @@ function answer(choice){
     main.style.display="block";
     updateClock();
   }else{
-    result.textContent="راه رفتن بازه... هر وقت خواستی می‌تونی برگردی.";
+    result.textContent="راهت بازه؛ هر وقت خواستی می‌تونی برگردی.";
     result.className="result bad";
     const back=document.createElement("button");
     back.className="choice";
