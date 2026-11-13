@@ -91,14 +91,6 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
 .toggle:after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.3s;}
 .toggle.on:after{transform:translateX(-18px);}
 .settings-note{font-size:10px;opacity:.4;margin-top:14px;text-align:center;}
-.lock-screen{position:fixed;inset:0;z-index:45;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .9s ease;}
-.lock-screen.show{opacity:1;pointer-events:auto;}
-.lock-inner{width:min(340px,90vw);}
-.lock-icon{font-size:38px;margin-bottom:14px;filter:drop-shadow(0 0 16px rgba(255,255,255,.35));}
-.lock-title{font-size:20px;margin-bottom:8px;}
-.lock-sub{font-size:12px;opacity:.5;margin-bottom:26px;}
-.lock-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;color:#fff;font-family:inherit;font-size:15px;text-align:center;}
-.lock-status{min-height:22px;font-size:13px;margin-top:14px;}
 .intro{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;}
 .intro.hide{animation:introHide 1s ease forwards;}
 .intro-content{width:90%;text-align:center;position:relative;}
@@ -166,17 +158,6 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
   </div>
 </div>
 
-<div class="lock-screen" id="lockScreen">
-  <div class="lock-inner">
-    <div class="lock-icon">🔒</div>
-    <div class="lock-title">این‌جا قفل است...</div>
-    <div class="lock-sub">برای ورود، رمز را وارد کن.</div>
-    <input class="lock-input" id="lockInput" type="password" placeholder="رمز ورود" onkeydown="if(event.key==='Enter')tryUnlock()">
-    <button class="choice" style="margin-top:12px;width:100%;" onclick="tryUnlock()">ورود 🤍</button>
-    <div class="lock-status" id="lockStatus"></div>
-  </div>
-</div>
-
 <div class="container">
   <section class="question-screen" id="questionScreen" style="display:none;">
     <div class="question">می‌مونی یا می‌ری؟</div>
@@ -215,25 +196,6 @@ body.night{background:radial-gradient(circle at 50% 42%,#0c1528 0%,#03060d 48%,#
 <button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔇</button>
 
 <script>
-const SITE_PASSWORD = "angel";
-
-function tryUnlock(){
-  const val=document.getElementById("lockInput").value.trim().toLowerCase();
-  const status=document.getElementById("lockStatus");
-  const lockTeases=["اشتباهه... ولی دلم نیومد ناراحتت کنم 😅","اینم نیست. شاید یه چیز دیگه امتحان کنی؟","💡 راهنمایی: یه اسم انگلیسیه که با «a» شروع می‌شه..."];
-  if(val===SITE_PASSWORD){
-    status.style.color="#7dffa8";
-    status.textContent="درسته؛ خوش اومدی. 🤍";
-    setTimeout(()=>{      document.getElementById("lockScreen").classList.remove("show");
-      document.getElementById("questionScreen").style.display="block";
-    },900);
-  }else{
-    window.lockFails=(window.lockFails||0)+1;
-    status.style.color="#ff7384";
-    status.textContent=lockTeases[Math.min(window.lockFails,lockTeases.length)-1];
-  }
-}
-
 let menuOpen=false;
 function toggleMenu(){
   menuOpen=!menuOpen;
@@ -459,10 +421,9 @@ updateClock();
 
 window.addEventListener("DOMContentLoaded",()=>{
   const intro=document.getElementById("intro");
-  const lock=document.getElementById("lockScreen");
   setTimeout(()=>{
     intro.classList.add("hide");
-    lock.classList.add("show");
+    document.getElementById("questionScreen").style.display="block";
     setTimeout(()=>intro.remove(),1100);
   },4200);
 });
