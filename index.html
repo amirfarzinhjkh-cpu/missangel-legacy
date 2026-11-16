@@ -1,74 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070912">
-<meta name="color-scheme" content="dark">
-<meta name="description" content="MissAngel — چند لحظه فاصله از شلوغی جهان؛ جایی برای مکث، کشف و حس‌کردن.">
-<title>MissAngel — فراتر از یک مکث</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="MISSANGEL // اتصال، ردپا، حقیقت. گزارش فنی نشست مرورگر.">
+<title>MISSANGEL // SIGNAL INTELLIGENCE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<canvas id="sky" aria-hidden="true"></canvas><div class="cursor-glow" id="cursorGlow"></div>
-<header class="topbar" id="topbar"><div class="wrap nav" id="nav">
-<a class="brand" href="#home"><span class="brand-mark">✦</span><span>MissAngel</span></a>
-<nav class="nav-links" id="navLinks"><a href="#moments">حال‌وهوا</a><a href="#thought">یک مکث</a><a href="#choice">انتخاب تو</a><a href="#heart">ضربان</a></nav>
-<div class="nav-actions"><div class="visit" title="تعداد بازدیدهای ثبت‌شده در همین مرورگر">بازدید این مرورگر <b id="visitCount">—</b></div><button class="menu-btn" id="menuBtn" type="button" aria-label="باز کردن منو" aria-controls="navLinks" aria-expanded="false">☰</button></div>
-</div></header>
-<main>
-<section class="hero" id="home"><div class="wrap hero-grid">
-<div class="hero-copy-wrap reveal">
-<div class="eyebrow">A LITTLE SPACE OUTSIDE THE NOISE</div>
-<h1>گاهی جهان،<span>به یک مکث نیاز دارد.</span></h1>
-<p class="hero-copy">نه برای فرار از همه‌چیز؛ فقط برای چند لحظه آرام‌تر دیدن، عمیق‌تر نفس کشیدن و دوباره پیدا کردن حسِ همین لحظه.</p>
-<div class="hero-buttons"><a class="btn btn-primary" href="#moments">وارد این لحظه شو <span>↙</span></a><a class="btn btn-ghost" href="#choice">شروع با یک انتخاب <span>✧</span></a></div>
-<div class="hero-note"><i class="pulse-dot"></i> اینجا عجله‌ای برای هیچ‌چیز نیست.</div>
+<div class="noise"></div><div class="scanlines"></div>
+<header class="top"><a class="logo" href="#top"><span class="logo-mark">M</span><span>MISSANGEL<small> SIGNAL INTELLIGENCE</small></span></a><div class="top-right"><span class="live"><i></i> SYSTEM ONLINE</span><span id="clock">--:--:--</span></div></header>
+<main id="top">
+<section class="hero">
+<div class="hero-meta"><span>FIELD REPORT / 001</span><span id="report-id">SESSION: INITIALIZING</span></div>
+<div class="hero-grid"><div class="hero-copy"><p class="eyebrow">DIGITAL FOOTPRINT ANALYSIS</p><h1>ردپای دیجیتال.<br><em>بی‌واسطه.</em></h1><p class="lead">هر اتصال، نشانه‌هایی از خودش به‌جا می‌گذارد. این سامانه فقط داده‌هایی را بررسی می‌کند که مرورگر و سرویس عمومی شبکه واقعاً در اختیارش می‌گذارند.</p><div class="actions"><button id="scanBtn" class="btn primary"><span>⟡</span> آغاز تحلیل نشست</button><button id="copyBtn" class="btn ghost" disabled>کپی گزارش</button></div><div class="micro"><span class="pulse"></span> تحلیل محلی مرورگر · بدون ذخیره‌سازی در سرور</div></div>
+<div class="visual"><div class="radar"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div><div class="radar-cross"></div><div class="radar-sweep"></div><div class="radar-core">M<span>∴</span></div><div class="radar-point p1"></div><div class="radar-point p2"></div></div><div class="visual-label"><span>LIVE TELEMETRY</span><b id="visual-status">AWAITING SCAN</b></div></div></div>
+<div class="hero-bottom"><span>MISSANGEL / OBSERVATION NODE</span><span>NO ASSUMPTIONS. ONLY EVIDENCE.</span></div>
+</section>
+<section class="report" id="report">
+<div class="section-head"><div><p class="eyebrow">01 / CONNECTION INTELLIGENCE</p><h2>گزارش اتصال</h2></div><span class="section-tag" id="scan-state">در انتظار تحلیل</span></div>
+<div class="status-strip"><div class="status-icon">⌁</div><div><b id="status-title">نشستی برای تحلیل انتخاب نشده است.</b><p id="status-desc">برای دریافت داده‌های قابل‌مشاهده، تحلیل را آغاز کن.</p></div><span class="status-code" id="status-code">STANDBY</span></div>
+<div class="data-grid">
+<article class="data-card wide"><div class="card-head"><span>NETWORK / PUBLIC ADDRESS</span><span class="index">01</span></div><div class="big-value" id="ip">— — — —</div><div class="sub-value" id="ip-note">نشانی عمومی هنوز دریافت نشده</div></article>
+<article class="data-card"><div class="card-head"><span>GEO / REGION</span><span class="index">02</span></div><div class="value" id="region">—</div><div class="sub-value" id="country-code">کشور / منطقه</div></article>
+<article class="data-card"><div class="card-head"><span>CLIENT / BROWSER</span><span class="index">03</span></div><div class="value" id="browser">—</div><div class="sub-value" id="platform">سیستم‌عامل / پلتفرم</div></article>
+<article class="data-card"><div class="card-head"><span>DEVICE / DISPLAY</span><span class="index">04</span></div><div class="value" id="device">—</div><div class="sub-value" id="resolution">وضوح صفحه</div></article>
+<article class="data-card"><div class="card-head"><span>LOCALE / TIMEZONE</span><span class="index">05</span></div><div class="value" id="timezone">—</div><div class="sub-value" id="language">زبان مرورگر</div></article>
+<article class="data-card"><div class="card-head"><span>RUNTIME / CAPABILITIES</span><span class="index">06</span></div><div class="value" id="runtime">—</div><div class="sub-value" id="memory">هسته‌های پردازنده / حافظه تقریبی</div></article>
+<article class="data-card"><div class="card-head"><span>CONNECTION / NETWORK</span><span class="index">07</span></div><div class="value" id="connection">—</div><div class="sub-value" id="online">وضعیت اتصال</div></article>
+<article class="data-card"><div class="card-head"><span>SESSION / TIMESTAMP</span><span class="index">08</span></div><div class="value" id="timestamp">—</div><div class="sub-value" id="referrer">منبع ارجاع، در صورت وجود</div></article>
 </div>
-<div class="art-stage reveal delay-1" id="artStage"><div class="core-halo"></div><div class="orbit"></div><div class="orbit two"></div><div class="heart-emblem"></div><div class="heart-core">✧</div><div class="art-caption">FEEL • PAUSE • RETURN</div></div>
-</div><div class="scroll-cue"><i></i> کمی پایین‌تر</div></section>
-<section class="section" id="moments"><div class="wrap">
-<div class="section-head reveal"><div class="kicker">01 / THE ATMOSPHERE</div><h2>سه راه برای دور شدن از هیاهو</h2><p>قرار نیست چیزی را ثابت کنی. فقط یکی از این لحظه‌ها را انتخاب کن و چند ثانیه با آن بمان.</p></div>
-<div class="moments">
-<article class="moment reveal" role="button" aria-pressed="false" tabindex="0" data-theme="night" aria-label="انتخاب حال‌وهوای آرامش شب"><span class="moment-no">01</span><span class="moment-icon">☾</span><h3>آرامشِ شب</h3><p>وقتی صداها کم می‌شوند، بعضی فکرها بالاخره فرصت شنیده‌شدن پیدا می‌کنند.</p></article>
-<article class="moment reveal delay-1" role="button" aria-pressed="false" tabindex="0" data-theme="light" aria-label="انتخاب حال‌وهوای نور کوچک"><span class="moment-no">02</span><span class="moment-icon">✧</span><h3>نورِ کوچک</h3><p>همیشه لازم نیست همه‌چیز روشن باشد؛ گاهی یک نقطه نور کافی‌ست.</p></article>
-<article class="moment reveal delay-2" role="button" aria-pressed="false" tabindex="0" data-theme="continue" aria-label="انتخاب حال‌وهوای ادامه دادن"><span class="moment-no">03</span><span class="moment-icon">∞</span><h3>ادامه دادن</h3><p>هر مکثی پایان راه نیست. بعضی مکث‌ها فقط فرصتی برای شروع دوباره‌اند.</p></article>
-</div></div></section>
-<section class="interlude" id="thought"><div class="wrap reveal"><div class="quote-mark">“</div><p class="quote">قرار نیست همیشه قوی باشی؛<br><span>گاهی فقط کافی‌ست با خودت مهربان‌تر باشی.</span></p><div class="quote-sub">یک یادآوری کوچک، برای همین لحظه.</div></div></section>
-<section class="section" id="breath"><div class="wrap"><div class="section-head reveal"><div class="kicker">02 / BREATHE</div><h2>فقط چند نفس، بدون عجله.</h2><p>دایره را دنبال کن؛ با بزرگ‌شدنش دم بگیر و با کوچک‌شدنش بازدم کن.</p></div><div class="breathing-wrap reveal"><div class="breathing-orb" id="breathOrb">آماده‌ای؟</div><div class="breath-status" id="breathStatus" aria-live="polite">یک تمرین کوتاه و آرام</div><div class="breathing-controls"><button class="btn btn-primary" id="breathStart" type="button">شروع تنفس</button><button class="btn btn-ghost" id="breathStop" type="button">توقف</button></div></div></div></section>
-
-<section class="section feature-lab" id="little-things"><div class="wrap">
-<div class="section-head reveal"><div class="kicker">03 / LITTLE INTERACTIONS</div><h2>چند گوشه‌ی کوچک برای خودت</h2><p>هر کدام را خواستی امتحان کن؛ هیچ‌چیز اجباری نیست.</p></div>
-<div class="feature-grid">
-<article class="feature-card reveal"><h3>جعبه‌ی رهاسازی ✧</h3><p>فکری را که می‌خواهی کمی سبک‌تر شوی بنویس و رهایش کن.</p><textarea id="releaseText" maxlength="180" placeholder="هر چیزی که دلت می‌خواهد رها کنی..."></textarea><div class="feature-actions"><button class="btn btn-primary" id="releaseBtn">رها کن</button></div><div class="feature-output" id="releaseOutput" aria-live="polite"></div></article>
-<article class="feature-card reveal delay-1"><h3>روشن کردن یک ستاره ⭐</h3><p>یک ستاره به آسمان همین صفحه اضافه کن.</p><div class="star-field" id="starField" aria-label="آسمان ستاره‌ها"></div><div class="feature-actions"><button class="btn btn-primary" id="starBtn">روشن کن</button></div><div class="feature-output" id="starCount">۰ ستاره در این صفحه</div></article>
-<article class="feature-card reveal"><h3>نقاشی با نور ✦</h3><p>روی صفحه بکش؛ رد نور بعد از چند لحظه محو می‌شود.</p><div class="feature-actions"><button class="btn btn-primary" id="drawBtn">شروع نقاشی</button><button class="btn btn-ghost" id="clearDrawBtn">پاک کردن</button></div><div class="feature-output" id="drawStatus">برای شروع، دکمه را بزن و روی صفحه بکش.</div></article>
-<article class="feature-card reveal delay-1"><h3>یک دقیقه سکوت ☾</h3><p>برای ۶۰ ثانیه فقط مکث کن؛ بقیه‌ی صفحه کنار می‌رود.</p><div class="feature-actions"><button class="btn btn-primary" id="silenceBtn">شروع یک دقیقه</button></div></article>
-<article class="feature-card reveal"><h3>میکسر صدای آرامش 🎧</h3><p>نویز باران‌مانند و یک تُن آرام را با هم تنظیم کن. صدا فقط با اجازه‌ی تو فعال می‌شود.</p><div class="range-row">نویز باران‌مانند <input id="rainVolume" type="range" min="0" max="100" value="0"><span id="rainValue">۰</span></div><div class="range-row">نُت آرام <input id="toneVolume" type="range" min="0" max="100" value="0"><span id="toneValue">۰</span></div><div class="feature-actions"><button class="btn btn-primary" id="audioStart">فعال‌سازی صدا</button><button class="btn btn-ghost" id="audioStop">خاموش</button></div></article>
-<article class="feature-card reveal delay-1"><h3>دفترچه‌ی شکرگزاری ♡</h3><p>سه اتفاق کوچک خوب امروز را برای خودت نگه دار؛ فقط روی همین دستگاه.</p><textarea id="thanksText" maxlength="500" placeholder="۱. امروز...&#10;۲. خوشحال شدم از...&#10;۳. ممنونم برای..."></textarea><div class="feature-actions"><button class="btn btn-primary" id="saveThanks">ذخیره‌ی یادداشت</button><button class="btn btn-ghost" id="showThanks">یادداشت قبلی</button></div><div class="feature-output" id="thanksOutput"></div></article>
-<article class="feature-card reveal"><h3>کارت جمله‌ی امروز ✉</h3><p>جمله‌ی فعلی را به شکل یک کارت ساده ذخیره کن.</p><div class="feature-actions"><button class="btn btn-primary" id="saveQuote">ذخیره‌ی کارت</button></div><div class="feature-output" id="quoteOutput"></div></article>
-<article class="feature-card reveal delay-1"><h3>شیشه‌ی بخارگرفته ☁</h3><p>با لمس شیشه، جمله‌ی پشت آن را آرام‌آرام پیدا کن.</p><div class="fog-panel" id="fogPanel"><span>گاهی جواب، پشت کمی سکوت پنهان است.</span></div><div class="feature-output">برای پاک کردن بخار، انگشتت را روی شیشه بکش.</div></article>
-<article class="feature-card reveal"><h3>یک آغوش گرم 🧡</h3><p>اگر امروز کمی مهربانی لازم داری، این نور برای توست.</p><div class="feature-actions"><button class="btn btn-primary" id="hugBtn">یک آغوش</button></div><div class="feature-output" id="hugOutput"></div></article>
-<article class="feature-card reveal delay-1"><h3>حالت خلوت Zen ◌</h3><p>همه‌چیز کنار می‌رود؛ فقط جمله‌ی مرکزی باقی می‌ماند.</p><div class="feature-actions"><button class="btn btn-primary" id="zenBtn">ورود به حالت Zen</button></div></article>
-<article class="feature-card reveal"><h3>لینک هدیه 🎁</h3><p>یک جمله انتخاب کن و لینک همان جمله را برای کسی بفرست.</p><div class="feature-actions"><button class="btn btn-primary" id="giftBtn">ساخت لینک هدیه</button></div><div class="feature-output" id="giftOutput"></div></article>
-<article class="feature-card reveal delay-1"><h3>اتاق مخفی ✨</h3><p>لوگوی بالای صفحه را پنج بار پشت سر هم لمس کن.</p><div class="feature-output">بعضی چیزها فقط برای کنجکاوهاست.</div></article>
-</div>
-</div></section>
-<div class="silence-overlay" id="silenceOverlay" role="dialog" aria-modal="true" aria-label="یک دقیقه سکوت"><div class="silence-inner"><div class="kicker">A QUIET MINUTE</div><h2>هیچ کاری لازم نیست.</h2><p>فقط همین‌جا باش؛ نفس بکش.</p><div class="silence-clock" id="silenceClock">۰۱:۰۰</div><p id="silenceLine">این لحظه هم می‌گذرد؛ با خودت مهربان باش.</p><button class="btn btn-ghost" id="endSilence">پایان مکث</button></div></div>
-<div class="secret-overlay" id="secretOverlay" role="dialog" aria-modal="true" aria-label="اتاق مخفی"><div class="silence-inner"><div class="kicker">A HIDDEN CORNER</div><h2>به گوشه‌ی پنهان خوش اومدی ✦</h2><p>همه‌ی نورها قرار نیست دیده شوند؛ بعضی‌ها فقط برای پیدا شدن‌اند.</p><button class="btn btn-primary" id="closeSecret">برگشت</button></div></div>
-<div class="exit-overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-label="پایان بازدید"><div class="silence-inner"><div class="kicker">UNTIL NEXT TIME</div><h2>مراقب خودت باش.</h2><p>هر وقت نیاز به مکث داشتی، اینجا منتظرته.</p><button class="btn btn-primary" id="returnBtn">برگشت به سایت</button></div></div>
-<canvas class="light-canvas" id="lightCanvas"></canvas>
-
-<section class="section" id="choice"><div class="wrap"><div class="choice-panel reveal"><div class="kicker">04 / YOUR MOMENT</div><h2>حالا انتخاب با توست.</h2><p>می‌خواهی چند لحظه بیشتر اینجا بمانی؟</p><div class="choice-actions"><button class="btn btn-primary" id="stayBtn">می‌مونم <span>🤍</span></button><button class="btn btn-ghost" id="leaveBtn">فعلاً می‌رم <span>↗</span></button></div><div class="mood-options" aria-label="ثبت حال‌وهوای فعلی"><button type="button" data-mood-choice="آرامم" aria-pressed="false">آرامم ☾</button><button type="button" data-mood-choice="خسته‌ام" aria-pressed="false">خسته‌ام ☁</button><button type="button" data-mood-choice="امیدوارم" aria-pressed="false">امیدوارم ✧</button><button type="button" data-mood-choice="ذهنم شلوغه" aria-pressed="false">ذهنم شلوغه ♡</button></div><div class="choice-result" id="choiceResult" aria-live="polite"></div></div></div></section>
-<section class="section" id="heart"><div class="wrap heart-section">
-<div class="heart-interactive reveal"><button class="heart-button" id="heartButton" aria-label="نمایش یک جمله تازه"><span class="heart-emblem"></span></button><div class="heart-message" id="heartMessage" aria-live="polite">روی قلب بزن؛ شاید جمله‌ای برای تو داشته باشد.</div></div>
-<div class="heart-copy reveal delay-1"><div class="kicker">05 / A SMALL REMINDER</div><h2>بعضی حس‌ها،<br>با یک اشاره زنده می‌شوند.</h2><p>این قلب فقط یک نشانه است؛ برای یادآوری اینکه میان تمام اتفاق‌های روزمره، هنوز می‌شود لحظه‌ای ایستاد و چیزی ساده را حس کرد.</p><div class="hint">هر بار لمسش کنی، یک جمله تازه می‌بینی.</div></div>
-</div></section>
+<div class="technical"><div class="technical-head"><span>02 / RAW CLIENT SIGNATURE</span><span>READ-ONLY</span></div><pre id="ua">User-Agent: waiting for scan…</pre><div class="technical-foot"><span>DATA SOURCE: BROWSER APIs + PUBLIC IP LOOKUP</span><span id="duration">—</span></div></div>
+</section>
+<section class="notice"><div class="notice-mark">!</div><div><b>مرزهای دسترسی</b><p>این گزارش به رمزها، فایل‌ها، دوربین، میکروفون، پیام‌ها یا هویت واقعی افراد دسترسی ندارد. مکان احتمالی شبکه از روی IP تخمین زده می‌شود و ممکن است دقیق نباشد. داده‌ها در همین صفحه نمایش داده می‌شوند و به حساب مدیر سایت ارسال یا ذخیره نمی‌شوند.</p></div></section>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><div><span class="footer-brand">MissAngel ✦</span><small>یک مکث کوتاه، بیرون از شلوغی جهان.</small><div class="footer-origin">الهامِ آغاز این مکث؛ نامی که در سکوت می‌ماند.</div></div><div class="footer-socials"><a href="https://t.me/AMORYG" target="_blank" rel="noopener noreferrer" aria-label="Telegram">✈ Telegram</a><a href="https://instagram.com/amir_afterr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎ Instagram</a></div><div class="footer-credit"><strong>سازنده: Nobody</strong><span> — این سایت متعلق به کسی‌ست که روزی به یادش بودم؛ اما او اکنون مرا فراموش کرده است.</span></div><div class="footer-note">© <span id="year"></span> MissAngel</div></div></footer>
-<button class="zen-exit" id="zenExitBtn" type="button" aria-label="خروج از حالت Zen" title="خروج از حالت Zen">↩</button><button class="sound-btn" id="soundBtn" aria-label="روشن یا خاموش کردن صدا">♫</button><div class="toast" id="toast" role="status"></div>
-
+<footer><span>MISSANGEL © <b id="year"></b></span><span>ENGINEERED FOR TRANSPARENCY <i>◆</i></span></footer>
+<div class="toast" id="toast" role="status"></div>
 <script src="app.js" defer></script>
 </body></html>
